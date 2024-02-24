@@ -32,9 +32,9 @@ function Note({ note, onDelete }) {
           </p>
           <select value={selectedColor} onChange={handleColorChange}>
             <option value='white'>White</option>
-            <option value='red'>Red</option>
-            <option value='green'>Green</option>
-            <option value='blue'>Blue</option>
+            <option value='rgb(243, 159, 118)'>Peach</option>
+            <option value='rgb(255, 248, 184)'>Sand</option>
+            <option value='rgb(226, 246, 211)'>Mint</option>
           </select>
           <button onClick={handleDelete}>
             <MdDelete />
