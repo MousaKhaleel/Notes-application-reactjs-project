@@ -15,15 +15,15 @@ function App() {
       const initialNotesData = {
         notes: [
           {
-            title: 'test',
+            title: 'Welcome',
             body:
-              'fsawfinessp rhiq rveeh ie fwheiiiiiiiiiiiiiiiii iiiiiiiiiiiiiiiiiiiiii iiiiiiiiiiiiiiiiiiiiiiiiii iiiiiiiiiipohfieeeeeeee eeeeeeeeeeeeee eeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeee eeeeeeeeeeehwi hewthe eih',
+              'Hi',
             date: '11/12/2020',
             id: '1',
           },
           {
-            title: 'test2',
-            body: 'dhpidihihdsivi i i f ihf hfi fhiih f f hfj',
+            title: 'Click me (the title) to show the note',
+            body: 'welcome in note click again to show the title',
             date: '2/5/2021',
             id: '2',
           },
