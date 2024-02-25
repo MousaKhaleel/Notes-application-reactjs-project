@@ -3,16 +3,16 @@ import { FaClock } from "react-icons/fa";
 import { useState } from 'react';
 
 function Note({ note, onDelete, onReminder, setReminders }) {
-    const [s, setS] = useState(note.title);
+    const [swapable, setSwapable] = useState(note.title);
     const [selectedColor, setSelectedColor] = useState('white');
 
 
   
     function handleShowBody() {
-      if (s === note.title) {
-        setS(note.body);
+      if (swapable === note.title) {
+        setSwapable(note.body);
       } else {
-        setS(note.title);
+        setSwapable(note.title);
       }
     }
   
@@ -31,7 +31,7 @@ function Note({ note, onDelete, onReminder, setReminders }) {
     return (
       <div className='note' style={{ backgroundColor: selectedColor }}>
         <div className='noteText' onClick={handleShowBody}>
-          <h4>{s}</h4>
+          <h4>{swapable}</h4>
         </div>
         <div className='controles'>
           <p>
