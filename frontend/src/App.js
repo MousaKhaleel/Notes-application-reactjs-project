@@ -5,6 +5,7 @@ import NotesList from './components/NotesList'
 
 function App() {
   const [notes, setNotes] = useState(null);
+  const [reminder,setReminder]=useState();
 
   useEffect(() => {
     const savedNotesData = localStorage.getItem('notesData');

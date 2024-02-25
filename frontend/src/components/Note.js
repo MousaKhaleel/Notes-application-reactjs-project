@@ -1,9 +1,14 @@
 import { MdDelete } from 'react-icons/md';
+import { FaClock } from "react-icons/fa";
 import { useState } from 'react';
 
 function Note({ note, onDelete }) {
     const [s, setS] = useState(note.title);
     const [selectedColor, setSelectedColor] = useState('white');
+
+    function handleSetReminder() {
+      const reminderTime = prompt("Enter reminder");
+    }
   
     function handleShowBody() {
       if (s === note.title) {
@@ -36,6 +41,9 @@ function Note({ note, onDelete }) {
             <option value='rgb(255, 248, 184)'>Sand</option>
             <option value='rgb(226, 246, 211)'>Mint</option>
           </select>
+          <button onClick={handleSetReminder}>
+          <FaClock />
+        </button>
           <button onClick={handleDelete}>
             <MdDelete />
           </button>
