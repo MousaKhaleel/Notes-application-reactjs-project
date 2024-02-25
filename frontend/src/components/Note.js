@@ -1,12 +1,18 @@
 import { MdDelete } from 'react-icons/md';
 import { FaClock } from "react-icons/fa";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Note({ note, onDelete, onReminder, setReminders }) {
     const [swapable, setSwapable] = useState(note.title);
     const [selectedColor, setSelectedColor] = useState('white');
 
-
+useEffect(()=>{
+  const savedColor=localStorage.getItem('colorData')
+  if (savedColor) {
+    const data = JSON.parse(savedColor);
+    setSelectedColor(data.color);
+  }
+},[])
   
     function handleShowBody() {
       if (swapable === note.title) {
@@ -18,6 +24,8 @@ function Note({ note, onDelete, onReminder, setReminders }) {
   
     function handleColorChange(e) {
       setSelectedColor(e.target.value);
+      const data = { color: e.target.value };
+      localStorage.setItem('colorData',JSON.stringify(data))
     }
   
     function handleDelete() {
