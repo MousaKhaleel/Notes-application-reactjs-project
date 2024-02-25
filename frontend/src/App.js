@@ -5,7 +5,7 @@ import NotesList from './components/NotesList'
 
 function App() {
   const [notes, setNotes] = useState(null);
-  const [reminders,setReminders]=useState();
+  const [reminders,setReminders]=useState({});
 
   useEffect(() => {
     const savedNotesData = localStorage.getItem('notesData');
@@ -59,12 +59,12 @@ function App() {
     localStorage.setItem('notesData', JSON.stringify(updatedNotesData));
   }
 
-  function handleSetReminder(note) {
-    const reminderDateTime = prompt("Enter reminder");
+  function handleSetReminder(id) {
+    const reminderTime = prompt("Enter reminder");
 
     const updatedReminders = {
       ...reminders,
-      [note.id]: reminderDateTime,
+      [id]: reminderTime,
     };
 
     setReminders(updatedReminders);
