@@ -5,10 +5,11 @@ import NotesList from './components/NotesList'
 
 function App() {
   const [notes, setNotes] = useState(null);
-  const [reminder,setReminder]=useState();
+  const [reminders,setReminders]=useState();
 
   useEffect(() => {
     const savedNotesData = localStorage.getItem('notesData');
+    const savedRemindersData = localStorage.getItem('remindersData');
     if (savedNotesData) {
       const data = JSON.parse(savedNotesData);
       setNotes(data.notes);
@@ -24,7 +25,7 @@ function App() {
           },
           {
             title: 'Click me (the title) to show the note',
-            body: 'welcome in note click again to show the title',
+            body: 'Welcome in note click again to show the title',
             date: '2/5/2021',
             id: '2',
           },
@@ -44,6 +45,11 @@ function App() {
     localStorage.setItem('notesData', JSON.stringify(updatedNotesData));
   }
 
+  const updatedRemindersData = {
+    reminders: reminders,
+  };
+  localStorage.setItem('remindersData', JSON.stringify(updatedRemindersData));
+
   function handleAdd(newNote) {
     const updatedNotes = notes ? [...notes, newNote] : [newNote];
     setNotes(updatedNotes);
@@ -53,7 +59,18 @@ function App() {
     localStorage.setItem('notesData', JSON.stringify(updatedNotesData));
   }
 
-  return <div className='App'>{notes && <NotesList notes={notes} onDelete={handleDelete} onAdd={handleAdd} />}</div>;
+  function handleSetReminder(note) {
+    const reminderDateTime = prompt("Enter reminder");
+
+    const updatedReminders = {
+      ...reminders,
+      [note.id]: reminderDateTime,
+    };
+
+    setReminders(updatedReminders);
+  }
+
+  return <div className='App'>{notes && <NotesList notes={notes} onDelete={handleDelete} onAdd={handleAdd} onReminder={handleSetReminder} setReminders={setReminders} />}</div>;
 }
 
 export default App;
